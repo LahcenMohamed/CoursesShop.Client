@@ -1,0 +1,26 @@
+﻿@page "/Authentication/Login"
+@inject IAuthenticationServices _athenticationServices
+@inject ILocalStorageService _localStore
+@inject IDialogService DialogService
+@inject NavigationManager _navigationManager
+@layout AuthenficationLayout
+
+<FluentEditForm Model="LoginModel" OnValidSubmit="Submit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="inp-div">
+        <input type="text" @bind="LoginModel.UserName" Placeholder="User Name" class="input-login">
+        <FluentValidationMessage For="() => LoginModel.UserName" class="text-danger"></FluentValidationMessage>
+    </div>
+    <div class="inp-div">
+        <input type="password" @bind="LoginModel.Password" Placeholder="Password" class="input-login">
+        <FluentValidationMessage For="() => LoginModel.Password" class="text-danger"></FluentValidationMessage>
+        <a href="/Authentication/forgetpassword">Forget password</a>
+
+    </div>
+
+    <button type="submit" class="login-btn">
+        Login
+    </button>
+
+    <span>Do not you have an account? <a href="/Authentication/Signup">Sign up</a></span>
+</FluentEditForm>

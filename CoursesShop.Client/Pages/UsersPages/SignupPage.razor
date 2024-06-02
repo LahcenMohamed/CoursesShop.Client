@@ -1,0 +1,44 @@
+﻿@page "/Authentication/Signup"
+@inject IAuthenticationServices _athenticationServices
+@inject ILocalStorageService _localStore
+@inject IDialogService DialogService
+@inject IStudentServices _studentServices
+@inject NavigationManager _navigationManager
+@layout AuthenficationLayout
+
+<FluentEditForm Model="Request" OnValidSubmit="()=> Submit()">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="inp-div">
+        <input type="text" @bind="Request.StudentOrTeacher.FullName" Placeholder="Full Name" class="input-login">
+        <FluentValidationMessage For="() => Request.StudentOrTeacher.FullName" class="text-danger"></FluentValidationMessage>
+    </div>
+
+    <div class="inp-div">
+        <input type="email" @bind="Request.StudentOrTeacher.Email" Placeholder="Email" class="input-login">
+        <FluentValidationMessage For="() => Request.StudentOrTeacher.Email" class="text-danger"></FluentValidationMessage>
+    </div>
+    <div class="inp-div">
+        <input type="text" @bind="Request.User.UserName" Placeholder="User Name" class="input-login">
+        <FluentValidationMessage For="() => Request.User.UserName" class="text-danger"></FluentValidationMessage>
+    </div>
+    <div class="inp-div">
+        <input type="password" @bind="Request.User.Password" Placeholder="Password" class="input-login">
+        <FluentValidationMessage For="() => Request.User.Password" class="text-danger"></FluentValidationMessage>
+
+    </div>
+
+    <div class="inp-div">
+        <FluentSelect @bind-Value="selectedUserType" TOption="string" Multiple="false">
+            <FluentOption Disabled="true">Choose Type</FluentOption>
+            <FluentOption Value="Teacher">Teacher</FluentOption>
+            <FluentOption Value="Student">Student</FluentOption>
+        </FluentSelect>
+
+    </div>
+
+
+    <button type="submit" class="login-btn">
+        Sign up
+    </button>
+
+</FluentEditForm>

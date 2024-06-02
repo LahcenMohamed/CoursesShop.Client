@@ -1,0 +1,15 @@
+﻿@page "/Admin/Teachers/{Id}/Details"
+@inject ITeacherServices _teacherServices
+@inject ILocalStorageService _localStore
+@inject IDialogService DialogService
+@inject IConfiguration Configuration
+@inject NavigationManager _navigationManager
+
+@if(Teacher is not null)
+{
+<FluentCard Width="350px" Height="500px">
+    <img style="width:320px;height:400px" src="@($"{BackendUrl}{Teacher.imageUrl}")" alt="Teacher Image">
+    <h4>@Teacher.FullName</h4>
+    <p>@Teacher.Email</p>
+</FluentCard>
+}
