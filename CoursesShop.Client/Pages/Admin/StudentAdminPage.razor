@@ -1,0 +1,19 @@
+﻿@page "/Admin/Students"
+@inject IStudentServices StudentServices
+@inject ILocalStorageService _localStore
+@inject IDialogService DialogService
+@inject NavigationManager _navigationManager
+
+<FluentDataGrid Items="@students" ResizableColumns=true Style="height: 405px;overflow:auto;">
+    <PropertyColumn Property="@(c => c.FullName)" Sortable="true" Tooltip="true" Title="Name of student"/>
+    <PropertyColumn Property="@(c => c.Email)" Sortable="true" Align="Align.Start" Tooltip="true" />
+    <TemplateColumn Title="Actions" Align="@Align.End">
+        <FluentButton aria-label="Delete item" IconEnd="@(new Icons.Regular.Size20.Delete().WithColor(Color.Error))" OnClick="@(() => DeleteAsync(context))" />
+    </TemplateColumn>
+</FluentDataGrid>
+
+<div>
+    <FluentButton IconEnd="@(new Icons.Regular.Size20.ArrowLeft().WithColor(Color.Accent))" Class="table-pagination-btn" OnClick="GoBackAsync"></FluentButton>
+    <p>@currentPage</p>
+    <FluentButton IconEnd="@(new Icons.Regular.Size20.ArrowRight().WithColor(Color.Accent))" Class="table-pagination-btn" OnClick="GoNextAsync"></FluentButton>
+</div>

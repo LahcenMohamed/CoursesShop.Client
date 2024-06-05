@@ -7,9 +7,12 @@
 
 @if(Teacher is not null)
 {
-<FluentCard Width="350px" Height="500px">
-    <img style="width:320px;height:400px" src="@($"{BackendUrl}{Teacher.imageUrl}")" alt="Teacher Image">
-    <h4>@Teacher.FullName</h4>
-    <p>@Teacher.Email</p>
-</FluentCard>
+<div>
+    <FluentCard Width="350px" Height="500px">
+        <img style="width:320px;height:400px" src="@($"{BackendUrl}{Teacher.imageUrl}")" alt="Teacher Image">
+        <h4>@Teacher.FullName</h4>
+        <p>@Teacher.Email</p>
+    </FluentCard>
+</div>
+
 }
