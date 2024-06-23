@@ -9,7 +9,7 @@
     <PropertyColumn Title="Full Name" Property="@(t => t.FullName)"></PropertyColumn>
     <PropertyColumn Title="Email" Property="@(t => t.Email)"></PropertyColumn>
     <TemplateColumn Title="Actions" Align="@Align.End">
-        <FluentButton aria-label="Get item" IconEnd="@(new Icons.Regular.Size20.CardUi().WithColor(Color.Accent))" OnClick="@(() => GetAsync(context))" />
+        <FluentButton aria-label="Get item" IconEnd="@(new Icons.Regular.Size20.CardUi())" OnClick="@(() => GetAsync(context))" />
         <FluentButton aria-label="Delete item" IconEnd="@(new Icons.Regular.Size20.Delete().WithColor(Color.Error))" OnClick="@(() => DeleteAsync(context))" />
     </TemplateColumn>
 </FluentDataGrid>

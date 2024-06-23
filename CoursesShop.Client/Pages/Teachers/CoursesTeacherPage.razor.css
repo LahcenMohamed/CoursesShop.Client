@@ -1,0 +1,61 @@
+﻿div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    font-size: 10px;
+    line-height: 16px;
+}
+
+.rateP {
+    display: inline;
+    margin-left: 10px;
+}
+
+img {
+    width: 230px;
+    height: 195px;
+}
+
+.delete-button {
+    width: 47%;
+    margin-right: 2.5%;
+    color: var(--error);
+    border: 2px solid var(--error);
+}
+
+.details-button {
+    width: 47.5%;
+    border: 2px solid var(--accent-fill-rest);
+    color: var(--accent-fill-rest);
+}
+
+.update-button {
+    width: 47.5%;
+    border: 2px solid var(--success);
+    color: var(--success)
+}
+
+.photo-button {
+    width: 47.5%;
+    border: 2px solid white;
+}
+
+.add-button {
+    width: 170px;
+    border: 2px solid var(--accent-fill-rest);
+    color: var(--accent-fill-rest);
+    margin-bottom: 20px;
+}
+
+fluent-card {
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    height: 70px;
+    margin-top: 7px;
+}

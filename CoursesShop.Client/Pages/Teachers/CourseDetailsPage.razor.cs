@@ -1,28 +1,32 @@
 ﻿using CoursesShop.Client.Models.Bases;
 using CoursesShop.Client.Models.Entities;
+using CoursesShop.Client.Models.Responses;
 using Microsoft.AspNetCore.Components;
 using Refit;
 
-namespace CoursesShop.Client.Pages.Admin
+namespace CoursesShop.Client.Pages.Teachers
 {
-    public partial class TeacherByIdPage
+    public partial class CourseDetailsPage
     {
         [Parameter]
         public string Id { get; set; }
-        public Teacher Teacher { get; set; }
-        public string BackendUrl { get; set; }
+        private CourseResponse course;
+        private List<Review> reviews;
+        private string backendUrl;
 
+        public CourseDetailsPage()
+        {
+            reviews = new List<Review>();
+        }
         protected override async Task OnInitializedAsync()
         {
-            BackendUrl = Configuration["IpForImage"];
+            backendUrl = Configuration["IpForImage"];
             try
             {
-                var token = await _localStore.GetItemAsync<string>("token");
-                var result = await _teacherServices.GetById(token, Id);
-                if (result.Succeeded)
-                {
-                    Teacher = result.Data;
-                }
+                var response = await CoursesServices.GetById(Id);
+                course = response.Data;
+                var reviewResponse = await ReviewServices.GetByCourseId(Id);
+                reviews = reviewResponse.Data;
             }
             catch (ApiException ex)
             {

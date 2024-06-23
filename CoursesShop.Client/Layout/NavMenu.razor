@@ -3,10 +3,14 @@
     <label for="navmenu-toggle" class="navmenu-icon"><FluentIcon Value="@(new Icons.Regular.Size20.Navigation())" Color="Color.Fill" /></label>
     <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
         <FluentNavMenu Id="main-menu" Width="250" Collapsible="true" Title="Navigation menu" @bind-Expanded="expanded">
-             <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
-             <FluentNavLink Href="Admin/Teachers" Icon="@(new Icons.Regular.Size20.People())" IconColor="Color.Accent">Teachers</FluentNavLink>
-             <FluentNavLink Href="Admin/Students" Icon="@(new Icons.Regular.Size20.PeopleList())" IconColor="Color.Accent">Students</FluentNavLink>
-             <FluentNavLink Href="Course" Icon="@(new Icons.Regular.Size20.Video())" IconColor="Color.Accent">Courses</FluentNavLink>
+             <FluentNavLink Href="Admin" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" >Home</FluentNavLink>
+             <FluentNavLink Href="Admin/Users" Icon="@(new Icons.Regular.Size20.PersonAccounts())">Users</FluentNavLink>
+             <FluentNavLink Href="Admin/Teachers" Icon="@(new Icons.Regular.Size20.People())" >Teachers</FluentNavLink>
+             <FluentNavLink Href="Admin/Students" Icon="@(new Icons.Regular.Size20.PeopleList())" >Students</FluentNavLink>
+             <FluentNavLink Href="Admin/Courses" Icon="@(new Icons.Regular.Size20.LearningApp())" >Courses</FluentNavLink>
+             <FluentNavLink Href="Admin/Settings" Icon="@(new Icons.Regular.Size20.Settings())" >Settings</FluentNavLink>
+            <FluentNavLink Href="SignOut" Icon="@(new Icons.Regular.Size20.SignOut())">Sign out</FluentNavLink>
+
         </FluentNavMenu>
     </nav>
 </div>

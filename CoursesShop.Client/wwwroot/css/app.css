@@ -172,9 +172,6 @@ code {
     }
 }
 
-
-
-
 @media (max-width: 500px) {
     .login {
         background-size: 177vh;

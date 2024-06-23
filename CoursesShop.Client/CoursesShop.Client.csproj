@@ -20,4 +20,8 @@
     <ProjectReference Include="..\CoursesShop.Client.Services\CoursesShop.Client.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Students\" />
+  </ItemGroup>
+
 </Project>

@@ -22,10 +22,9 @@ namespace CoursesShop.Client.Pages.UsersPages
                 if (result.Succeeded)
                 {
                     await _localStore.SetItemAsync("token", result.Data.AccessToken);
-                    if (result.Data.refreshToken.UserType == "Admin")
-                    {
-                        _navigationManager.NavigateTo("Admin");
-                    }
+                    await _localStore.SetItemAsync("type", result.Data.refreshToken.UserType);
+                    _navigationManager.NavigateTo(result.Data.refreshToken.UserType);
+
                 }
             }
             catch (ApiException ex)

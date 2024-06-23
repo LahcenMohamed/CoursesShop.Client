@@ -1,0 +1,33 @@
+﻿@page "/Admin/Courses"
+@inject ICourseServices CoursesServices
+@inject ILocalStorageService LocalStore
+@inject IDialogService DialogService
+@inject IConfiguration Configuration
+@inject NavigationManager NavigationManager
+<h3>Courses</h3>
+<div>
+@foreach(var course in courses){
+
+   <FluentCard b-w8pvg8qug6 Width="270px" Height="425px">
+       <img src="@($"{backendUrl}{@course.ImageUrl}")" alt="Course Image">
+       <h4>@course.Title</h4>
+         <h5>@course.Price$</h5>
+         @for (int i = 1; i <= 5; i++)
+         {
+             if(i <= course.ReviewsAverge)
+             {
+                <FluentIcon Value="@(new Icons.Filled.Size20.Star())" Color="Color.Warning" />
+             }else
+             {
+                <FluentIcon Value="@(new Icons.Regular.Size20.Star())" Color="Color.Warning"/>
+             }
+         }
+         <h4 class="rateP">@course.ReviewsAverge</h4>
+         <h6>From: @course.TeacherName</h6>
+         <FluentButton b-w8pvg8qug6 aria-label="Delete item" IconStart="@(new Icons.Filled.Size20.Delete().WithColor(Color.Error))" OnClick="@(() => DeleteAsync(course.Id,course.Title))" Class="delete-button">Delete</FluentButton>
+         <FluentButton b-w8pvg8qug6 aria-label="Details item" IconStart="@(new Icons.Filled.Size20.CardUi())" OnClick="@(() => GetById(course.Id))" Class="details-button">Details</FluentButton>
+   </FluentCard>
+}
+</div>
+
+

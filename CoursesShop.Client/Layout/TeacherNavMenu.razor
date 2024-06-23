@@ -1,0 +1,16 @@
+﻿<div class="navmenu">
+    <input type="checkbox" title="Menu expand/collapse toggle" id="navmenu-toggle" class="navmenu-icon" />
+    <label for="navmenu-toggle" class="navmenu-icon"><FluentIcon Value="@(new Icons.Regular.Size20.Navigation())" Color="Color.Fill" /></label>
+    <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
+        <FluentNavMenu Id="main-menu" Width="250" Collapsible="true" Title="Navigation menu" @bind-Expanded="expanded">
+            <FluentNavLink Href="Teacher" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())">Home</FluentNavLink>
+            <FluentNavLink Href="Teacher/Courses" Icon="@(new Icons.Regular.Size20.LearningApp())">Courses</FluentNavLink>
+            <FluentNavLink Href="Teacher/Settings" Icon="@(new Icons.Regular.Size20.Settings())">Settings</FluentNavLink>
+            <FluentNavLink Href="SignOut" Icon="@(new Icons.Regular.Size20.SignOut())">Sign out</FluentNavLink>
+        </FluentNavMenu>
+    </nav>
+</div>
+
+@code {
+    private bool expanded = true;
+}

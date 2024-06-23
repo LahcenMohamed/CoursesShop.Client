@@ -1,0 +1,22 @@
+﻿.rateP {
+    display: inline;
+    margin-left: 10px;
+}
+
+.main-div {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 3fr,1fr;
+}
+
+.name-header {
+    display: inline;
+    margin-right: 15px;
+}
+
+.course-card {
+}
+
+.comment-card {
+    padding-top: 7px;
+}

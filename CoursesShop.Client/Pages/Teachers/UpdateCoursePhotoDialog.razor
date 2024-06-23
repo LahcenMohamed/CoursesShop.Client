@@ -1,0 +1,69 @@
+﻿@implements IDialogContentComponent<string>
+
+<FluentInputFile Id="my-file-uploader"
+                 @ref="@myFileByStream"
+                 Mode="InputFileMode.Stream"
+                 Multiple="false"
+                 MaximumFileCount="1"
+                 MaximumFileSize="@(10*1024*1024)"
+                 Accept=".jpg, .png, .jpeg"
+                 @bind-ProgressPercent="@ProgressPercent"
+                 Style="height: 300px; border: 1px dashed var(--accent-fill-rest);"
+                 OnCompleted="@OnCompleted">
+    <ChildContent>
+        <label for="my-file-uploader">
+            <FluentIcon Value="@(new @Icons.Regular.Size24.ArrowUpload())" />
+        </label>
+
+        <div>
+            Drag files here you wish to upload,
+            or <label for="my-file-uploader">browse</label>
+            for them<span style="color: red;">*</span>.
+            <br />
+            <em>Maximum of 1 files allowed.</em>
+        </div>
+
+        <div>
+            <br />
+            <a href="#">Read more about our supported file formats.</a>
+        </div>
+    </ChildContent>
+</FluentInputFile>
+
+<FluentDialogFooter>
+    <FluentButton Appearance="Appearance.Accent" OnClick="@SaveAsync">Save</FluentButton>
+    <FluentButton Appearance="Appearance.Neutral" OnClick="@CancelAsync">Cancel</FluentButton>
+</FluentDialogFooter>
+
+@code
+{
+    int ProgressPercent = 0;
+    FluentInputFile? myFileByStream = default!;
+    Stream? stream;
+
+    [Parameter]
+    public string? Content { get; set; }
+
+    [CascadingParameter]
+    public FluentDialog Dialog { get; set; } = default!;
+
+    private async Task SaveAsync()
+    {
+        if (stream is not null)
+        {
+            await Dialog.CloseAsync(stream);
+        }
+    }
+
+    private async Task CancelAsync()
+    {
+        await Dialog.CancelAsync();
+    }
+
+    void OnCompleted(IEnumerable<FluentInputFileEventArgs> files)
+    {
+        var file = files.FirstOrDefault();
+        stream = file.Stream;
+        Console.WriteLine(stream.Length);
+    }
+}
